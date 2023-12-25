@@ -18,6 +18,7 @@ def draw_line(event):
         canvas.image.put('black', (x1-pixel_size, y1-pixel_size, x1+pixel_size, y1+pixel_size))
         ddaLine(x1, y1, x2, y2, pixel_size)
         click_num = 0
+        
 def ddaLine(x1, y1, x2, y2, pixel_size):
     dx = x2 - x1
     dy = y2 - y1
@@ -28,7 +29,7 @@ def ddaLine(x1, y1, x2, y2, pixel_size):
         x1 += xinc
         y1 += yinc
         canvas.image.put('black', (round(x1)-pixel_size, round(y1)-pixel_size, round(x1)+pixel_size, round(y1)+pixel_size))
-        
+
 def rectDraw(x1, y1, x2, y2, pixel_size):
     ddaLine(x1, y2, x2, y2, pixel_size)
     ddaLine(x2, y2, x2, y1, pixel_size)
