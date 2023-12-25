@@ -1,5 +1,5 @@
 from tkinter import *
-
+shape = 0
 def draw_line(event):
     global click_num
     global x1, y1
@@ -8,17 +8,17 @@ def draw_line(event):
         y1 = event.y
         click_num = 1
         pixel_size = 5  # Adjust this value based on the size you want for your pixel
-        canvas.image.put('black', (x1-pixel_size, y1-pixel_size, x1+pixel_size, y1+pixel_size))
+        #canvas.image.put('black', (x1-pixel_size, y1-pixel_size, x1+pixel_size, y1+pixel_size))
     else:
         global x2
         global y2
         x2 = event.x
         y2 = event.y
         pixel_size = 5  # Adjust this value based on the size you want for your pixel
-        canvas.image.put('black', (x1-pixel_size, y1-pixel_size, x1+pixel_size, y1+pixel_size))
-        ddaLine(x1, y1, x2, y2, pixel_size)
+        #canvas.image.put('black', (x1-pixel_size, y1-pixel_size, x1+pixel_size, y1+pixel_size))
+        rectDraw(x1, y1, x2, y2, pixel_size)
         click_num = 0
-        
+
 def ddaLine(x1, y1, x2, y2, pixel_size):
     dx = x2 - x1
     dy = y2 - y1
