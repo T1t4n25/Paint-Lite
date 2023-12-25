@@ -1,5 +1,7 @@
 from tkinter import *
 shape = 0
+pixel_size = 5
+connected_lines = True
 def draw_line(event):
     global click_num
     global x1, y1
@@ -7,17 +9,19 @@ def draw_line(event):
         x1 = event.x
         y1 = event.y
         click_num = 1
-        pixel_size = 5  # Adjust this value based on the size you want for your pixel
+        
         #canvas.image.put('black', (x1-pixel_size, y1-pixel_size, x1+pixel_size, y1+pixel_size))
     else:
         global x2
         global y2
         x2 = event.x
         y2 = event.y
-        pixel_size = 5  # Adjust this value based on the size you want for your pixel
-        #canvas.image.put('black', (x1-pixel_size, y1-pixel_size, x1+pixel_size, y1+pixel_size))
-        rectDraw(x1, y1, x2, y2, pixel_size)
+        ddaLine(x1, y1, x2, y2, pixel_size)
         click_num = 0
+        if connected_lines:
+            x1, y1 = x2, y2
+            click_num = 1
+        #canvas.image.put('black', (x1-pixel_size, y1-pixel_size, x1+pixel_size, y1+pixel_size))
 
 def ddaLine(x1, y1, x2, y2, pixel_size):
     dx = x2 - x1
@@ -36,6 +40,8 @@ def rectDraw(x1, y1, x2, y2, pixel_size):
     ddaLine(x2, y1, x1, y1, pixel_size)
     ddaLine(x1, y1, x1, y2, pixel_size)
 
+def RegularPolygon(x1, y1, x2, y2, pixel_size):
+    pass
 
 window = Tk()
 canvas = Canvas(window, width=600, height=600, background='white')
