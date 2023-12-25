@@ -3,7 +3,7 @@ import math
 shape = 0
 pixel_size = 2
 connected_lines = True
-sides = 360
+sides = 4
 
 def draw_polygon(event):
     global click_num
@@ -79,7 +79,7 @@ canvas.pack()
 image = PhotoImage(width=600, height=600)
 canvas.image = image
 canvas.create_image((300, 300), image=image, state="normal")
-canvas.bind('<Button-1>', draw_polygon)
+canvas.bind('<Button-1>', draw_line)
 
 click_num = 0
 
