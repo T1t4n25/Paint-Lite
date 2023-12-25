@@ -7,18 +7,18 @@ def draw_line(event):
         x1 = event.x
         y1 = event.y
         click_num = 1
-        pixel_size = 1  # Adjust this value based on the size you want for your pixel
-        #canvas.image.put('black', (x1, y1))
+        pixel_size = 5  # Adjust this value based on the size you want for your pixel
+        canvas.image.put('black', (x1-pixel_size, y1-pixel_size, x1+pixel_size, y1+pixel_size))
     else:
         global x2
         global y2
         x2 = event.x
         y2 = event.y
-        pixel_size = 1  # Adjust this value based on the size you want for your pixel
-        ddaLine(x1,y1,x2,y2)
+        pixel_size = 5  # Adjust this value based on the size you want for your pixel
+        canvas.image.put('black', (x1-pixel_size, y1-pixel_size, x1+pixel_size, y1+pixel_size))
+        squareDraw(x1, y1, x2, y2, pixel_size)
         click_num = 0
-
-def ddaLine(x1, y1, x2, y2):
+def ddaLine(x1, y1, x2, y2, pixel_size):
     dx = x2 - x1
     dy = y2 - y1
     steps = abs(dx) if abs(dx) > abs(dy) else abs(dy)
@@ -27,8 +27,12 @@ def ddaLine(x1, y1, x2, y2):
     for i in range(steps):
         x1 += xinc
         y1 += yinc
-        canvas.image.put('black', (round(x1), round(y1)))
-
+        canvas.image.put('black', (round(x1)-pixel_size, round(y1)-pixel_size, round(x1)+pixel_size, round(y1)+pixel_size))
+def squareDraw(x1, y1, x2, y2, pixel_size):
+    ddaLine(x1, y2, x2, y2, pixel_size)
+    ddaLine(x2, y2, x2, y1, pixel_size)
+    ddaLine(x2, y1, x1, y1, pixel_size)
+    ddaLine(x1, y1, x1, y2, pixel_size)
 
 window = Tk()
 canvas = Canvas(window, width=400, height=400, background='white')
